@@ -7,7 +7,7 @@ const FlatListHorizontalStyle = StyleSheet.create({
     padding: 5,
     paddingLeft: 10,
     paddingRight: 10,
-    backgroundColor: '#BDBDBD',
+    // backgroundColor: '#BDBDBD',
     margin: 8,
     borderRadius: 10,
   },

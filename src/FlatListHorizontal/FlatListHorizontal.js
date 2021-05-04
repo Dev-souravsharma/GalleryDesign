@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, FlatList} from 'react-native';
+import {View, Text, FlatList, Pressable} from 'react-native';
 import FlatListHorizontalStyle from './FlatListHorizontalStyle';
 const data = [
   {
@@ -44,6 +44,12 @@ const data = [
   },
 ];
 class FlatListHorizontal extends Component {
+  constructor() {
+    super();
+    this.state = {
+      itemClick: null,
+    };
+  }
   render() {
     return (
       <View style={FlatListHorizontalStyle.container}>
@@ -52,9 +58,22 @@ class FlatListHorizontal extends Component {
           horizontal={true}
           keyExtractor={item => item.id}
           renderItem={({item}) => (
-            <View style={FlatListHorizontalStyle.horzontalStyle}>
-              <Text>{item.name}</Text>
-            </View>
+            <Pressable
+              onPress={() => {
+                this.setState({itemClick: item.id});
+                console.log('Pressed ' + item.id);
+              }}>
+              <View
+                style={[
+                  FlatListHorizontalStyle.horzontalStyle,
+                  {
+                    backgroundColor:
+                      item.id === this.state.itemClick ? '#1DE9B6' : '#BDBDBD',
+                  },
+                ]}>
+                <Text>{item.name}</Text>
+              </View>
+            </Pressable>
           )}
         />
       </View>
